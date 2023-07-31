@@ -1,7 +1,7 @@
 name: tests/unit
 
 on:
-	pushes:
+	push:
 		branches: [staging]
 	pull_request:
 		types: [opened, synchronize, reopened]
