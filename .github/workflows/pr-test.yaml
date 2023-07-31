@@ -40,6 +40,7 @@ jobs:
       with:
         loglevel: debug
         workdir: _helloworld
+        execute: true
         kraftfile: |
           specification: '0.5'
           name: helloworld-test
