@@ -23,17 +23,19 @@ jobs:
             PLAT: qemu
 
     steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
 
     - name: Fetch helloworld
       uses: actions/checkout@v2
-      if: ${{ github.event_name != 'push' }}
       with:
         repository: unikraft/app-helloworld
         fetch-depth: 1
         path: _helloworld
 
     - name: Integration test
-      uses: unikraft/kraftkit@staging
+      uses: unikraft/kraftkit@stable
       with:
         loglevel: debug
         workdir: _helloworld
@@ -41,7 +43,7 @@ jobs:
           specification: '0.5'
           name: helloworld-test
           unikraft:
-            sources: ../
+            source: ../
             kconfig:
               CONFIG_LIBUKTEST: "y"
               CONFIG_LIBUKTEST_ALL: "y"
