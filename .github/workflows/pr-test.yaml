@@ -35,7 +35,7 @@ jobs:
         path: _helloworld
 
     - name: Integration test
-      uses: unikraft/kraftkit@stable
+      uses: unikraft/kraftkit@staging
       with:
         loglevel: debug
         workdir: _helloworld
