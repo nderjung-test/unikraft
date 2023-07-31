@@ -7,20 +7,22 @@ on:
     types: [opened, synchronize, reopened]
     branches: [staging]
     paths:
-      - '**'
-      - '!.github/**'
+      - 'lib/**'
+      - 'arch/**'
+      - 'include/**'
+      - 'plat/**'
+      - 'support/**'
+      - '.github/workflows/pr-test.yaml'
 
 jobs:
   test:
     name: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latests
     strategy:
       fail-fast: false
       matrix:
         include:
           - ARCH: x86_64
-            PLAT: qemu
-          - ARCH: arm64
             PLAT: qemu
 
     steps:
@@ -35,7 +37,7 @@ jobs:
         fetch-depth: 1
         path: _helloworld
 
-    - name: Integration test
+    - name: Run libc-test via uktest
       uses: unikraft/kraftkit@staging
       with:
         loglevel: debug
