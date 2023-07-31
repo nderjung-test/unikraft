@@ -53,6 +53,7 @@ jobs:
               CONFIG_LIBDEVFS_DEV_STDOUT: "y"
               CONFIG_LIBDEVFS_DEV_NULL_ZERO: "y"
               CONFIG_LIBDEVFS_DEV_ZERO: "y"
+              CONFIG_STACK_SIZE_PAGE_ORDER: 4
           libraries:
             libc-test:
               version: staging
@@ -80,15 +81,11 @@ jobs:
                 CONFIG_LIBLIBCTEST_FPCLASSIFY_TESTS: "y"
                 CONFIG_LIBLIBCTEST_POSIX_SPAWN_TESTS: "y"
                 CONFIG_LIBLIBCTEST_ACCESS_TESTS: "y"
-          musl:
-            version: staging
-            kconfig:
-              CONFIG_MUSL: "y"
-              CONFIG_LIBMUSL_COMPLEX: "y"
-          lwip:
-            version: staging
-            kconfig:
-              CONFIG_LWIP: "y"
+            musl:
+              version: staging
+              kconfig:
+                CONFIG_MUSL: "y"
+                CONFIG_LIBMUSL_COMPLEX: "y"
           targets:
           - architecture: ${{ matrix.ARCH }}
             platform: ${{ matrix.PLAT }}
